@@ -1,0 +1,50 @@
+#include <stdio.h>
+int main() {
+    int m, n, a[50], i, j, temp, x;
+    
+    printf("Enter the range of numbers (start and end): ");
+    scanf("%d %d", &m, &n);
+    
+    printf("Enter the size of numbers: ");
+    scanf("%d", &x);
+    
+    printf("Enter the numbers: ");
+    for (i = 0; i < x; i++) {
+        scanf("%d", &a[i]);
+    }
+    
+    // Sort the input numbers
+    for (i = 0; i < x; i++) {
+        for (j = i + 1; j < x; j++) {
+            if (a[i] > a[j]) {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+    
+    printf("Elements entered in the range are: ");
+    for (i = 0; i < x; i++)
+    {
+        printf("%d ", a[i]);
+    }
+   printf("\nMissing elements are: ");
+    
+    for (int num = m; num <= n; num++)
+    {
+        int found = 0;
+        for (i = 0; i < x; i++) 
+        {
+            if (a[i] == num) 
+            {
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            printf("%d ", num);
+        }
+    }
+    return 0;
+}
